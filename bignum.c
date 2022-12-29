@@ -61,7 +61,7 @@ bignum_t *bignum_from_string(bignum_t *n, char *str)
  * Return: @s after copying @n digits to it
  * Description: Behavior is undefined if @n is not a bignum_t object or NULL
  * Behavior is undefined if @s is not a malloc char array or fixed length
- * char array or length of @s is less than digits of @n
+ * char array or length of @s is less than len_of_digits of @n
  */
 char *bignum_to_string(bignum_t *n, char *s)
 {
