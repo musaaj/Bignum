@@ -38,6 +38,11 @@ bignum_t *bignum_from_string(bignum_t *n, char *str)
 	
 	if (n == NULL | str == NULL) return (NULL);
 	len = strlen(str);
+	if(str[0] == '-')
+	{
+		n->sign = -1;
+		len--;
+	}
 	n->len_of_digits = len;
 	len--;
 	while (i <= len)

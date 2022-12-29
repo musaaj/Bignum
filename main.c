@@ -4,7 +4,7 @@
 /**
  * main - example of bignum_t operations
  */
-void main(void)
+int main(void)
 {
 	/* declare objects */
 	bignum_t a, b, c;
@@ -25,5 +25,5 @@ void main(void)
 	bignum_to_string(&c, str);
 	/* print the @str to stdout */
 	printf("%s + %s = %s\n", s, s2, str);
-	return;
+	return (0);
 }

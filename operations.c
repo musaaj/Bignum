@@ -17,11 +17,11 @@ void bignum_add(bignum_t *a, bignum_t *b, bignum_t *c)
 
 	if (a == NULL | b == NULL | c == NULL)
 		return;
-	if (a->digits > b->digits)
-		len = a->digits;
+	if (a->len_of_digits > b->len_of_digits)
+		len = a->len_of_digits;
 	else 
-		len = b->digits;
-	c->digits = 0; /*set length of @c to 0*/
+		len = b->len_of_digits;
+	c->len_of_digits = 0; /*set length of @c to 0*/
 	for (i = 0; i < len; i++)
 	{
 		if (carry_over)
@@ -36,12 +36,12 @@ void bignum_add(bignum_t *a, bignum_t *b, bignum_t *c)
 			plus -= 10;
 		}
 		c->array[i] = plus;
-		c->digits++;
+		c->len_of_digits++;
 		plus = 0;
 	}
 	if (carry_over)
 	{
 		c->array[i] = carry_over;
-		c->digits++;
+		c->len_of_digits++;
 	}
 }
