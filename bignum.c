@@ -17,7 +17,7 @@ bignum_t *bignum_init(bignum_t *n)
 	{
 		n->array[i++] = NULL_DIGIT;
 	}
-	n->digits = 0;
+	n->len_of_digits = 0;
 	return (n);
 }
 
@@ -38,7 +38,7 @@ bignum_t *bignum_from_string(bignum_t *n, char *str)
 	
 	if (n == NULL | str == NULL) return (NULL);
 	len = strlen(str);
-	n->digits = len;
+	n->len_of_digits = len;
 	len--;
 	while (i <= len)
 	{
@@ -63,7 +63,7 @@ char *bignum_to_string(bignum_t *n, char *s)
 	unsigned int i;
 	unsigned int len;
 
-	len = n->digits;
+	len = n->len_of_digits;
 	for (i = 0; i < len; i++)
 		s[i] = n->array[len - i - 1] + ZERO;
 	s[len] = '\0';

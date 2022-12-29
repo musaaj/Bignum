@@ -24,6 +24,7 @@
 typedef struct bignum
 {
 	int array[MAX_DIGITS];
+	int sign;
 	unsigned int digits;
 } bignum_t;
 
