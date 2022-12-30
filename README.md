@@ -5,7 +5,7 @@ here are the changes i was talking about
 
 the first change is the struct used to store bignum_t instances.<br>
 i have changes the array type to char because it's only holding numbers<br>
-from 1 to 9 so it's going to waste memory< think but if you have your reasons you did that for sorry<br>
+from 1 to 9 so it's going to waste memory  i think but if you have your reasons you did that for sorry<br>
 
 there are some other changes also if you have time look at them <br>
 and also i have applied the 6 comparison operations. > < == != >= <= in a form of function<br>
