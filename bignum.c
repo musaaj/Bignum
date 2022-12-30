@@ -13,11 +13,12 @@ bignum_t *bignum_init(bignum_t *n)
 
 	if (!n)
 		return (NULL);
+	n->sign = 'P'; /* initializing default sign to positive */
 	while (i < MAX_DIGITS)
 	{
 		n->array[i++] = NULL_DIGIT;
 	}
-	n->len_of_digits = 0;
+	n->seek = MAX_DIGITS - 1; /* This sets the seek to the end of the array.*/
 	return (n);
 }
 
@@ -32,45 +33,49 @@ bignum_t *bignum_init(bignum_t *n)
  */
 bignum_t *bignum_from_string(bignum_t *n, char *str)
 {
-	unsigned int len;
-	int digit;
-	unsigned int i = 0;
-	
-	if (n == NULL | str == NULL) return (NULL);
+	int digit, len, i, j = 0;
+
+	if (n == NULL || str == NULL || !(is_tog(str, _IS_NUMBER)))
+		return (NULL);
 	len = strlen(str);
-	if(str[0] == '-')
+	if (len > MAX_DIGITS)
+		return (NULL);
+	if (str[0] < 48 || str[0] > 57)
 	{
-		n->sign = -1;
 		len--;
+		j++;
+		if (str[0] == '-')
+			n->sign = 'N';
 	}
-	n->len_of_digits = len;
-	len--;
-	while (i <= len)
+	n->seek = MAX_DIGITS - len;
+	i = n->seek;
+	while (i <= MAX_DIGITS)
 	{
-		digit = str[len - i] - ZERO;
-		n->array[i] = digit;
-		i++;
+		digit = str[j++];
+		n->array[i++] = digit;
 	}
 	return (n);
-}
+} /* needs test even though it's working */
 
 /**
  * bignum_to_string - copy bignum_t object to char array
  * @n: bignum_t object
- * @s: a fixed length or malloc char array
- * Return: @s after copying @n digits to it
+ *
+ * Return: The bignum_t converted to string.
  * Description: Behavior is undefined if @n is not a bignum_t object or NULL
- * Behavior is undefined if @s is not a malloc char array or fixed length
- * char array or length of @s is less than len_of_digits of @n
  */
-char *bignum_to_string(bignum_t *n, char *s)
+char *bignum_to_string(bignum_t *n)
 {
-	unsigned int i;
-	unsigned int len;
+	int i, j;
+	char *str = NULL;
 
-	len = n->len_of_digits;
-	for (i = 0; i < len; i++)
-		s[i] = n->array[len - i - 1] + ZERO;
-	s[len] = '\0';
-	return (s);
+	if (n == NULL)
+		return (NULL);
+	str = malloc(sizeof(char) * (MAX_DIGITS - n->seek + 1));
+	if (str == NULL)
+		return (NULL);
+	for (j = 0, i = n->seek; i < MAX_DIGITS; i++, j++)
+		str[j] = n->array[i];
+	str[i] = '\0';
+	return (str);
 }

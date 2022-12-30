@@ -15,21 +15,38 @@
 
 #ifndef _FACTORS_H
 #define _FACTORS_H
-#include <string.h>
 
 #define MAX_DIGITS 101
 #define NULL_DIGIT 0
 #define ZERO 48
 
+/* standard libary headers */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+/**
+ * struct bignum - struct to contain information about instance of bignum_t.
+ * @array: this is where the digits are stored.
+ * @seek: Where the last digit is.
+ * @sign: This holds the signe of the number it takes two value 'P' and 'N'
+ * 'P' for positive and 'N' for negative.
+ */
 typedef struct bignum
 {
-	int array[MAX_DIGITS];
-	int sign;
-	unsigned int len_of_digits;
+	char array[MAX_DIGITS];
+	int seek;
+	char sign;
 } bignum_t;
 
+/* local library headers */
+#include "bn_string.h"
+#include "bn_comparison.h"
+#include "test.h"
+
+/* function declrations */
 bignum_t *bignum_init(bignum_t *);
 bignum_t *bignum_from_string(bignum_t *, char *);
-char *bignum_to_string(bignum_t *n, char *s);
-void bignum_add(bignum_t *a, bignum_t *b, bignum_t *c);
+char *bignum_to_string(bignum_t *n);
+
 #endif
