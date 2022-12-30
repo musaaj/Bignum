@@ -14,4 +14,9 @@ if i've made any mistakes
 
 and also i have some designe to the add and substraction implementation i'll will send you once  i finish it.<br>
 
+you can compile it and try it.
+```
+gcc *.c
+```
+
 Thankyou !
