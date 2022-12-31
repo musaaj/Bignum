@@ -3,7 +3,7 @@
 /**
  * is_tog - check if a string contains homogenous content based on
  * a given toggels.
- * @str: the string.
+ * @str: The string.
  * @tog: 1(_IS_UPPER) to check all char's are upper,
  * 2(_IS_SMALLER) to check if all char's are smaller,
  * 3(_IS_NUMBER) to check if all char's are number,

@@ -1,6 +1,6 @@
 #ifndef BN_STRING_H
 #define BN_STRING_H
-/* string related declarations and defination of Bignum */
+/* String related declarations and defination of Bignum */
 
 /* macros for is_tog function tog parameter */
 #define _IS_UPPER 1
