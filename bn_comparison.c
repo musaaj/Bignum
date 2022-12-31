@@ -7,7 +7,7 @@
  * possible options are '>', '<' , '==', '>=', '<=', '!='
  * @s: second big num instance.
  *
- * Return: 1 if the operation is True, 0 if the opration is false.
+ * Return: 1 (operation is True), 0 (operation is false).
  * Description: NULL is considered less than any instance of bignum_t
  * and if NULL and NULL is passed they are considerd equal.
  * If op is NULL or any invalid operator by default equal comparasion
@@ -61,7 +61,7 @@ int check_op(char *op)
  * @f: The first bignum_t's address.
  * @s: The second bignum_t's address.
  *
- * Return: 1 if the operation is True, 0 if the opration is false.
+ * Return: 1 (operation is True), 0 (operation is false).
  */
 int bn_gt(bignum_t *f, bignum_t *s)
 {
@@ -101,7 +101,7 @@ int bn_gt(bignum_t *f, bignum_t *s)
  * @f: The first bignum_t's address.
  * @s: The second bignum_t's address.
  *
- * Return: 1 if the operation is True, 0 if the opration is false.
+ * Return: 1 (operation is True), 0 (operation is false).
  */
 int bn_lt(bignum_t *f, bignum_t *s)
 {
@@ -140,7 +140,7 @@ int bn_lt(bignum_t *f, bignum_t *s)
  * @f: The first bignum_t's address.
  * @s: The second bignum_t's address.
  *
- * Return: 1 if the operation is True, 0 if the opration is false.
+ * Return: 1 (operation is True), 0 (operation is false).
  */
 int bn_eq(bignum_t *f, bignum_t *s)
 {

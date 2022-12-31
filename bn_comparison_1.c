@@ -6,7 +6,7 @@
  * @f: The first bignum_t's address.
  * @s: The second bignum_t's address.
  *
- * Return: 1 if the operation is True, 0 if the opration is false.
+ * Return: 1 (operation is True), 0 (operation is false).
  */
 int bn_ne(bignum_t *f, bignum_t *s)
 {
@@ -34,7 +34,7 @@ int bn_ne(bignum_t *f, bignum_t *s)
  * @f: The first bignum_t's address.
  * @s: The second bignum_t's address.
  *
- * Return: 1 if the operation is True, 0 if the opration is false.
+ * Return: 1 (operation is True), 0 (operation is false).
  */
 int bn_ge(bignum_t *f, bignum_t *s)
 {
@@ -49,7 +49,7 @@ int bn_ge(bignum_t *f, bignum_t *s)
  * @f: The first bignum_t's address.
  * @s: The second bignum_t's address.
  *
- * Return: 1 if the operation is True, 0 if the opration is false.
+ * Return: 1 (operation is True), 0 (operation is false).
  */
 int bn_le(bignum_t *f, bignum_t *s)
 {
@@ -57,4 +57,3 @@ int bn_le(bignum_t *f, bignum_t *s)
 		return (1);
 	return (0);
 }
-

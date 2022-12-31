@@ -14,7 +14,6 @@
 #define _BN_LE 5 /* Less than or Equal to */
 #define _BN_NE 6 /* Not Equal */
 
-
 /**
  * struct op_comp - contains comparation operators function mapper.
  * @code: The code that is used to access the comparison function.
