@@ -16,3 +16,5 @@ You can start using the library by inluding the main header `bn.h` in your sourc
 |bignum_to_string | Description: This function convertes a bignum_t instance to string.<br><br>prototype: char * string_to_bignum(bignum_t * num).<br><br>@num : is the bignum_t instance to convert to string if @num is negative the sign is included in the string.<br><br>Return: a pointer to the string.|
 |c| Description: this function is used compare to bignum_t instances<br><br>prototype: int c(bignum_t l, char * sign, bignum_t r).<br><br>@l: The left hand operand bignum_t instace<br><br>@sign: The sign to compare the bignum_t instances the possible options are ">", "<", "==", ">=", "<=" and "!=".<br><br>Return: 1 (The comparison is True), 0 (The comparison is False).|
 |bn_free| Description: This functions releases any memory that was obtained by bn libray functions.<br><br>prototype: void bn_free(void)|
+
+> Note: some things listed here are not implemented yet sorry for the inconvineince.
