@@ -1,5 +1,9 @@
 #ifndef BN_COMPARISON_H
 #define BN_COMPARISON_H
+/* bignum_t comparaison related declarations and defination of Bignum */
+
+
+/* macro definations */
 
 /* codes used  for comparison */
 #define _BN_OPS 6 /* number of operations */
@@ -9,6 +13,7 @@
 #define _BN_GE 4 /* Greater than or Equal to */
 #define _BN_LE 5 /* Less than or Equal to */
 #define _BN_NE 6 /* Not Equal */
+
 
 /**
  * struct op_comp - contains comparation operators function mapper.
@@ -26,6 +31,8 @@ typedef struct op_comp
 
 
 /* function declarations */
+
+/* comparasion facilitators */ 
 int c(bignum_t *f, char *op, bignum_t *s);
 int check_op(char *);
 
@@ -36,5 +43,6 @@ int bn_eq(bignum_t *f, bignum_t *s);
 int bn_ge(bignum_t *f, bignum_t *s);
 int bn_le(bignum_t *f, bignum_t *s);
 int bn_ne(bignum_t *f, bignum_t *s);
+
 
 #endif
