@@ -1,12 +1,12 @@
 /**
- * Bignum is a simple implementation of big number
- * with precision of up to 100 digits written in C
- * The library is meant to be simple for simple uses so
- * only basic arithemetic operations are supported
- *
- * The only operations supported are; addition, subtraction
- * multiplication and division
- * Increment and decrement are also supported
+ * Bignum is a simple implementation of big number with precision of up
+ * to 100 digits written in C.
+ * The library is meant to be simple for simple uses so only basic
+ * arithemetic operations are supported
+ * The only operations supported right now are;
+ *   - basic arthmetic: addition, subtraction, multiplication, division
+ *   - comparison: >, <, ==, !=, >=, <=
+ *   - Increment and decrement are also supported
  *
  * Bignum is free to use free to modify free to
  * include in commercial software free to modify
@@ -15,7 +15,10 @@
 
 #ifndef _FACTORS_H
 #define _FACTORS_H
+/* main declarations and definations for Bignum */
 
+
+/* macro definations */
 #define MAX_DIGITS 101
 #define NULL_DIGIT 0
 #define ZERO 48
