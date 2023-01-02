@@ -31,7 +31,7 @@ typedef struct op_comp
 
 /* function declarations */
 
-/* comparasion facilitators */ 
+/* comparasion facilitators */
 int c(bignum_t *f, char *op, bignum_t *s);
 int check_op(char *);
 
