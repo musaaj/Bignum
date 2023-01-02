@@ -49,7 +49,7 @@ typedef struct bignum
 
 /* function declrations */
 bignum_t *bignum_init(bignum_t *);
-bignum_t *bignum_from_string(bignum_t *, char *);
+bignum_t *string_to_bignum(char *);
 char *bignum_to_string(bignum_t *n);
 
 #endif

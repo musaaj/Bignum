@@ -23,23 +23,25 @@ bignum_t *bignum_init(bignum_t *n)
 }
 
 /**
- * bignum_from_string - set a bignum_t object from a char array of digits
- * @n: pointer to a bignum_t object
+ * string_to_bignum - initializes a bignum_t object from a char array of digits
  * @str: string consisting of digits
- * Return: @n after setting it
- * Description: behaviour is undefined if @n is NULL
- * or not a pointer to a bignum_t object
- * Behavior is undefined if @str is not a char array or is NULL
+ *
+ * Return: The address of the new bignum_t instace (Success), NULL (False).
  */
-bignum_t *bignum_from_string(bignum_t *n, char *str)
+bignum_t *string_to_bignum(char *str)
 {
-	int digit, len, i, j = 0;
+	int len, i, j = 0;
+	bignum_t *n = NULL;
 
-	if (n == NULL || str == NULL || !(is_tog(str, _IS_NUMBER)))
+	if (str == NULL || !(is_tog(str, _IS_NUMBER)))
 		return (NULL);
-	len = strlen(str);
+	len = _strlen(str);
 	if (len > MAX_DIGITS)
 		return (NULL);
+	n = malloc(sizeof(bignum_t)); /* Recording this address needed*/
+	if (n == NULL)
+		return (NULL);
+	bignum_init(n);
 	if (str[0] < 48 || str[0] > 57)
 	{
 		len--;
@@ -47,15 +49,12 @@ bignum_t *bignum_from_string(bignum_t *n, char *str)
 		if (str[0] == '-')
 			n->sign = 'N';
 	}
-	n->seek = MAX_DIGITS - len;
-	i = n->seek;
+	i = n->seek = MAX_DIGITS - len;
 	while (i <= MAX_DIGITS)
-	{
-		digit = str[j++];
-		n->array[i++] = digit;
-	}
+		n->array[i++] = str[j++];
+
 	return (n);
-} /* needs test even though it's working */
+} /* needs some testing even though it's working */
 
 /**
  * bignum_to_string - copy bignum_t object to char array
@@ -71,6 +70,7 @@ char *bignum_to_string(bignum_t *n)
 
 	if (n == NULL)
 		return (NULL);
+	/* need to record this memory addres. */
 	str = malloc(sizeof(char) * (MAX_DIGITS - n->seek + 1));
 	if (str == NULL)
 		return (NULL);
