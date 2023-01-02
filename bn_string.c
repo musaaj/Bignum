@@ -57,3 +57,20 @@ int exact_match(char *a, char *b)
 			return (0);
 	return (1);
 }
+
+/**
+ * _strlen - countes the length of a string
+ * @s: Pointer to the first value of the string.
+ *
+ * Return: Void.
+ */
+int _strlen(char *s)
+{
+	int len = 0;
+
+	if (s == NULL)
+		return (len);
+	while (*(s + len) != '\0')
+		len++;
+	return (len);
+}

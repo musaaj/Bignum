@@ -10,5 +10,6 @@
 /* function declarations */
 int exact_match(char *a, char *b);
 int is_tog(char *str, int tog);
+int _strlen(char *str);
 
 #endif
