@@ -13,64 +13,69 @@ bignum_t *bignum_init(bignum_t *n)
 
 	if (!n)
 		return (NULL);
+	n->sign = 'P'; /* initializing default sign to positive */
 	while (i < MAX_DIGITS)
 	{
 		n->array[i++] = NULL_DIGIT;
 	}
-	n->len_of_digits = 0;
+	n->seek = MAX_DIGITS - 1; /* This sets the seek to the end of the array.*/
 	return (n);
 }
 
 /**
- * bignum_from_string - set a bignum_t object from a char array of digits
- * @n: pointer to a bignum_t object
+ * string_to_bignum - initializes a bignum_t object from a char array of digits
  * @str: string consisting of digits
- * Return: @n after setting it
- * Description: behaviour is undefined if @n is NULL
- * or not a pointer to a bignum_t object
- * Behavior is undefined if @str is not a char array or is NULL
+ *
+ * Return: The address of the new bignum_t instace (Success), NULL (False).
  */
-bignum_t *bignum_from_string(bignum_t *n, char *str)
+bignum_t *string_to_bignum(char *str)
 {
-	unsigned int len;
-	int digit;
-	unsigned int i = 0;
-	
-	if (n == NULL | str == NULL) return (NULL);
-	len = strlen(str);
-	if(str[0] == '-')
+	int len, i, j = 0;
+	bignum_t *n = NULL;
+
+	if (str == NULL || !(is_tog(str, _IS_NUMBER)))
+		return (NULL);
+	len = _strlen(str);
+	if (len > MAX_DIGITS)
+		return (NULL);
+	n = malloc(sizeof(bignum_t)); /* Recording this address needed*/
+	if (n == NULL)
+		return (NULL);
+	bignum_init(n);
+	if (str[0] < 48 || str[0] > 57)
 	{
-		n->sign = -1;
 		len--;
+		j++;
+		if (str[0] == '-')
+			n->sign = 'N';
 	}
-	n->len_of_digits = len;
-	len--;
-	while (i <= len)
-	{
-		digit = str[len - i] - ZERO;
-		n->array[i] = digit;
-		i++;
-	}
+	i = n->seek = MAX_DIGITS - len;
+	while (i <= MAX_DIGITS)
+		n->array[i++] = str[j++];
+
 	return (n);
-}
+} /* needs some testing even though it's working */
 
 /**
  * bignum_to_string - copy bignum_t object to char array
  * @n: bignum_t object
- * @s: a fixed length or malloc char array
- * Return: @s after copying @n digits to it
+ *
+ * Return: The bignum_t converted to string.
  * Description: Behavior is undefined if @n is not a bignum_t object or NULL
- * Behavior is undefined if @s is not a malloc char array or fixed length
- * char array or length of @s is less than len_of_digits of @n
  */
-char *bignum_to_string(bignum_t *n, char *s)
+char *bignum_to_string(bignum_t *n)
 {
-	unsigned int i;
-	unsigned int len;
+	int i, j;
+	char *str = NULL;
 
-	len = n->len_of_digits;
-	for (i = 0; i < len; i++)
-		s[i] = n->array[len - i - 1] + ZERO;
-	s[len] = '\0';
-	return (s);
+	if (n == NULL)
+		return (NULL);
+	/* need to record this memory addres. */
+	str = malloc(sizeof(char) * (MAX_DIGITS - n->seek + 1));
+	if (str == NULL)
+		return (NULL);
+	for (j = 0, i = n->seek; i < MAX_DIGITS; i++, j++)
+		str[j] = n->array[i];
+	str[i] = '\0';
+	return (str);
 }
